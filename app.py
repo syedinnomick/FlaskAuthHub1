@@ -16,6 +16,7 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'ayman123456'
 app.config['MYSQL_DB'] = 'flaskauthhub'
 
+# Initialize extensions
 mysql = MySQL(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -61,7 +62,7 @@ def login():
         else:
             flash('Username not found.', 'danger')
     
-    return render_template('login.html')
+    return "Login page placeholder – templates coming in Step C!"
 
 @app.route('/logout')
 @login_required
@@ -73,7 +74,7 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', username=current_user.username)
+    return f"Welcome to your dashboard, {current_user.username}!"
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -90,12 +91,12 @@ def register():
         flash('Registration successful! You can now log in.', 'success')
         return redirect(url_for('login'))
     
-    return render_template('register.html')
+    return "Register page placeholder – templates coming in Step C!"
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return "Home route placeholder – templates coming in Step C!"
 
 if __name__ == '__main__':
     app.run(debug=True)
